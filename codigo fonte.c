@@ -3,7 +3,7 @@
 #include <time.h>
 #include <string.h>
 
-#define TIMES_TO_RUN 30
+#define TIMES_TO_RUN 5
 #define RUN_SORT(function) \
     for(int i = 0; i < TIMES_TO_RUN; i++){\
         allocate_copy(&sorted, vet);\
@@ -49,24 +49,27 @@ int main(){
 		"bubble", "selection", "insertion", "merge", "quick", "heap", "counting", "radix", "bucket"
 	};
 
+
+	printf("Digite o valor de N:\n");
     scanf("%i", &N);
-    create_array(&vet);
-    
- //           RUN_SORT(bubble_sort(sorted));
-//	    RUN_SORT(selection_sort(sorted));
-  //  	    RUN_SORT(insert_sort(sorted));     
-    //        RUN_SORT(merge_sort(sorted, 0, N-1));
-            RUN_SORT(quick_sort(0, N-1, sorted));
-      //      RUN_SORT(heap_sort(sorted));
-        //    RUN_SORT(count_sort(sorted));
-          //  RUN_SORT(radix_sort(sorted));
-        //    RUN_SORT(bucket_sort(sorted));
+    create_array(&vet);    
+
+		
+      RUN_SORT(bubble_sort(sorted));
+      RUN_SORT(selection_sort(sorted));
+      RUN_SORT(insert_sort(sorted));     
+      RUN_SORT(merge_sort(sorted, 0, N-1));
+      RUN_SORT(quick_sort(0, N-1, sorted));
+      RUN_SORT(heap_sort(sorted));
+      RUN_SORT(count_sort(sorted));
+      RUN_SORT(radix_sort(sorted));
+      RUN_SORT(bucket_sort(sorted));
 
       print_array(sorted);
-
-  time_taken[0] /= TIMES_TO_RUN;
-    printf("%s Demorou %fms para executar.\n", "quick", time_taken[0]*1e3);
-
+    for(int i = 0; i < 9; i++){
+  	  time_taken[i] /= TIMES_TO_RUN;
+  	  printf("%s Demorou %fms para executar.\n", sort[i], time_taken[i]*1e3);
+    }
     free(vet);
     free(sorted);
     return 0;
